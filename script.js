@@ -1,5 +1,6 @@
 window.onload = function() { init() };
 
+//links to public google spreadsheet
 var public_spreadsheet_url = 'https://docs.google.com/spreadsheets/d/1yf246lvn3AR24QU1YH-3GX-Cb10L8PsJDdOaNGjsBTQ/pubhtml';
 
 function init() {
@@ -14,19 +15,24 @@ function showInfo(data, tabletop) {
   drawChart(data);
 }
 
+//select the container div and define it as a variable
 var container = d3.select("#container");
 
+//this is where you define the margin of the SVG rectangle
 var margin = {top: 0, right: 0, bottom: 0, left: 0};
 
+//dimension of the SVG rectangle
 var width = 960 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
+//create the SVG rectangle
 var svg = container.append("svg")
     .attr("width", width)
     .attr("height", height)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+//this adds the scale and axis
 var x = d3.scale.linear()
     .domain([0, 8008278])
     .range([0, width]);
